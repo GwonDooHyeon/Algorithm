@@ -27,8 +27,9 @@ public class Main {
         // 3
         // 4
         // 5
-        Arrays.stream(arr)
-                .sorted()
-                .forEach(System.out::println);
+        Arrays.sort(arr);
+        for (int i = 0; i < count; i++) {
+            System.out.println(arr[i]);
+        }
     }
 }

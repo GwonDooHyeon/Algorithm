@@ -33,24 +33,22 @@ public class Main {
         // 2. 소수를 제곱시켜 나가면서 end보다 이하인지 확인
         int answer = 0;
         for (int i = 2; i < isPrime.length; i++) {
+
             if (isPrime[i]) {
-//                long power = i;
-//                while (true) {
-//                    power *= i;
-//
-//                    if (power > end) break;
-//                    if (power >= start) answer++;
-//                }
-                long power = (long) i * i; // i^2로 초기화
-                while (power <= end) { // 범위 초과 시 종료
+                long power = (long) i * i;
+
+                while (power <= end) {
                     if (power >= start) {
                         answer++;
                     }
+
                     // 오버플로 방지: power * i가 long 범위를 넘는지 확인
                     if ((double) power * i > end) break;
-                    power *= i; // 다음 거듭제곱 계산
+                    power *= i;
                 }
+
             }
+
         }
 
         System.out.println(answer);

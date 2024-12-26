@@ -22,15 +22,15 @@ public class Main {
         isPrime[0] = isPrime[1] = false;
 
         // 1. 소수 판별
-        for (int i = 2; i < isPrime.length; i++) {
+        for (int i = 2; i * i < isPrime.length; i++) {
             if (isPrime[i]) {
-                for (int j = i + i; j < isPrime.length; j = j + i) {
+                for (int j = i * i; j < isPrime.length; j = j + i) {
                     isPrime[j] = false;
                 }
             }
         }
 
-        // 2. 소수를 제곱시켜 나가면서 end보다 이하인지 확인
+        // 2. 거의 소수 확인
         int answer = 0;
         for (int i = 2; i < isPrime.length; i++) {
 
@@ -42,7 +42,7 @@ public class Main {
                         answer++;
                     }
 
-                    // 오버플로 방지: power * i가 long 범위를 넘는지 확인
+                    // double로 형변환한 이유는 power * i가 long의 범위를 넘어갈 수 있기 때문
                     if ((double) power * i > end) break;
                     power *= i;
                 }
